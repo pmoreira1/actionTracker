@@ -1,6 +1,6 @@
 <?php
 
-require 'includes/db.php';
+require 'db.php';
 
 /*START A DB INSTANCE*/
 
