@@ -10,10 +10,27 @@ $app = new \Slim\App([
         'displayErrorDetails' => true,
     ],
 ]);
+$app->post("/wake", function ($request, $response) {
+    $db = new Db();
+    $q = "INSERT INTO `smoke`.`dayActions` (`action`) VALUES (1)";
+    $db->query($q);
+});
 
 $app->post("/sleep", function ($request, $response) {
     $db = new Db();
     $q = "INSERT INTO `smoke`.`dayActions` (`action`) VALUES (2)";
+    $db->query($q);
+});
+$app->post("/smoke", function ($request, $response) {
+    $db = new Db();
+    $data = $request->getParsedBody();
+    $location = $data['loc'];
+    $q = "INSERT INTO `smoke`.`dayActions` (`action`,`location`) VALUES (4," . $db->quote($location) . ")";
+    $db->query($q);
+});
+$app->post("/coffee", function ($request, $response) {
+    $db = new Db();
+    $q = "INSERT INTO `smoke`.`dayActions` (`action`) VALUES (5)";
     $db->query($q);
 });
 
