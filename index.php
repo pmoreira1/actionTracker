@@ -12,6 +12,7 @@ $app = new \Slim\App([
 ]);
 
 $app->post("/sleep", function ($request, $response) {
+    $db = new Db();
     $q = "INSERT INTO `smoke`.`dayActions` (`action`) VALUES (2)";
     $db->query($q);
 });
