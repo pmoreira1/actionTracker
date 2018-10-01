@@ -35,5 +35,9 @@ $app->post("/coffee", function ($request, $response) {
     $q = "INSERT INTO `smoke`.`dayActions` (`action`,`location`) VALUES (5," . $db->quote($location) . ")";
     $db->query($q);
 });
-
+$app->post("/newPack", function ($request, $response) {
+    $db = new Db();
+    $q = "INSERT INTO `smoke`.`dayActions` (`action`) VALUES (6)";
+    $db->query($q);
+});
 $app->run();
