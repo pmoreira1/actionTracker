@@ -4,7 +4,6 @@ require 'db.php';
 
 /*START A DB INSTANCE*/
 
-$db = new Db();
 
 function seconds2human($ss)
 {
