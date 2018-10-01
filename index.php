@@ -10,6 +10,11 @@ $app = new \Slim\App([
         'displayErrorDetails' => true,
     ],
 ]);
+$app->get("/hello", function ($request, $response) {
+    $result = 'hi';
+    return $response->withJson($result, 200);
+
+});
 
 $app->post("/sleep", function ($request, $response) {
     $data = $request->getParsedBody();
