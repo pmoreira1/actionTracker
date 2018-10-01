@@ -30,7 +30,10 @@ $app->post("/smoke", function ($request, $response) {
 });
 $app->post("/coffee", function ($request, $response) {
     $db = new Db();
-    $q = "INSERT INTO `smoke`.`dayActions` (`action`) VALUES (5)";
+    $data = $request->getParsedBody();
+    $location = $data['loc'];
+    print_r($data);
+    $q = "INSERT INTO `smoke`.`dayActions` (`action`,`location`) VALUES (5," . $db->quote($location) . ")";
     $db->query($q);
 });
 
