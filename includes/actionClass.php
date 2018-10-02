@@ -21,8 +21,6 @@ class ActionTracker
             $q .= " and `dateTime` like '$date%'";
         }
         $q = " ORDER BY `dateTime` desc limit 1 ";
-        $result = $this->db->select($q);
-        return $response->withJson($result, 200);
-
+        return $this->db->select($q);
     }
 }
