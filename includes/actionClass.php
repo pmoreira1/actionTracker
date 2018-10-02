@@ -33,7 +33,7 @@ class ActionTracker
 
     public function lastActivity($activity)
     {
-        $q = "SELECT * from dayActions where `action`= $activity ORDER BY `dateTime` desc limit 1 ";
+        $q = "SELECT *, TIMESTAMPDIFF(SECOND, `dateTime`,NOW()) AS secondsSince from dayActions where `action`= $activity ORDER BY `dateTime` desc limit 1 ";
         return $this->db->select($q)[0];
     }
 
