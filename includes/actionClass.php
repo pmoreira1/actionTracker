@@ -32,7 +32,7 @@ class ActionTracker
 
     public function dayActivity($activity) {
         $q = "SELECT COUNT(*) as `total` FROM dayActions WHERE `action` = $activity";
-        return $this->db->select($q)[0]
+        return $this->db->select($q)[0];
     }
 
 }
