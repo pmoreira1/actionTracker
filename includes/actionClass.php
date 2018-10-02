@@ -33,6 +33,7 @@ class ActionTracker
             //no sleep data add 24 hours to dayStart
             $dayEnd['dateTime'] = date('Y-m-d H:i:s', strtotime($dayStart . " + 24 hours"));
         }
+        return $dayEnd;
     }
 
     public function lastActivity($activity)
