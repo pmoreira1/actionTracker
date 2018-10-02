@@ -43,6 +43,8 @@ $app->post("/newPack", function ($request, $response) {
 
 $app->get("/home", function ($request, $response) {
 /**GET HOME PAGE DETAILS */
-
+    $db = new Db();
+    $action = new ActionTracker($db);
+    $action->hello();
 });
 $app->run();

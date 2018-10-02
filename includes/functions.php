@@ -2,7 +2,6 @@
 
 require 'db.php';
 require 'actionClass.php';
-/*START A DB INSTANCE*/
 
 
 function seconds2human($ss)
