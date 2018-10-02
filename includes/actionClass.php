@@ -44,7 +44,7 @@ class ActionTracker
         }
         $dayStart = $this->dayStart($date);
         $dayEnd = $this->dayEnd($date);
-        $q = "SELECT COUNT(*) as `total` FROM dayActions WHERE `action` = $activity and `timestamp` BETWEEN " . $this->db->quote($dayStart['dateTime']) . "  and " . $this->db->quote($dayEnd['dateTime']) . "";
+        $q = "SELECT COUNT(*) as `total` FROM dayActions WHERE `action` = $activity and `dateTime` BETWEEN " . $this->db->quote($dayStart['dateTime']) . "  and " . $this->db->quote($dayEnd['dateTime']) . "";
         return $this->db->select($q)[0];
     }
 
