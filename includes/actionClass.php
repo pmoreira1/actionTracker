@@ -20,7 +20,7 @@ class ActionTracker
         if ($date) {
             $q .= " and `dateTime` like '$date%'";
         }
-        $q = " ORDER BY `dateTime` desc limit 1 ";
+        $q .= " ORDER BY `dateTime` desc limit 1 ";
         return $this->db->select($q)[0];
     }
 }
