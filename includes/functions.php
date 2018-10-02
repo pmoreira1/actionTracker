@@ -1,7 +1,7 @@
 <?php
 
 require 'db.php';
-
+require 'actionClass.php';
 /*START A DB INSTANCE*/
 
 
