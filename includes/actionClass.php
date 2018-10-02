@@ -41,10 +41,12 @@ class ActionTracker
     {
         if (!$date) {
             $date = date('Y-m-d');
+            $dayEnd = date('Y-m-d', strtotime($date . " + 18 hours"));
+        } else {
+            $dayEnd = $this->dayEnd($date)['dateTime'];
         }
-        $dayStart = $this->dayStart($date);
-        $dayEnd = $this->dayEnd($date);
-        $q = "SELECT COUNT(*) as `total` FROM dayActions WHERE `action` = $activity and `dateTime` BETWEEN " . $this->db->quote($dayStart['dateTime']) . "  and " . $this->db->quote($dayEnd['dateTime']) . "";
+        $dayStart = $this->dayStart($date)['dateTime'];
+        $q = "SELECT COUNT(*) as `total` FROM dayActions WHERE `action` = $activity and `dateTime` BETWEEN " . $this->db->quote($dayStart) . "  and " . $this->db->quote($dayEnd) . "";
         return $this->db->select($q)[0];
     }
 
