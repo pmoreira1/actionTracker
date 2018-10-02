@@ -45,7 +45,7 @@ $app->get("/home", function ($request, $response) {
 /**GET HOME PAGE DETAILS */
     $db = new Db();
     $action = new ActionTracker($db);
-    $result['dayStart'] = $action->dayStart();
+    $result['dayStart'] = json_encode($action->dayStart()[0]);
     return $response->withJson($result, 200);
 });
 $app->run();
