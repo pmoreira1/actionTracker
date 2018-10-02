@@ -23,4 +23,16 @@ class ActionTracker
         $q .= " ORDER BY `dateTime` desc limit 1 ";
         return $this->db->select($q)[0];
     }
+
+    public function lastActivity($activity)
+    {
+        $q = "SELECT * from dayActions where `action`= $activity ORDER BY `dateTime` desc limit 1 ";
+        return $this->db->select($q)[0];
+    }
+
+    public function dayActivity($activity) {
+        $q = "SELECT COUNT(*) as `total` FROM dayActions WHERE `action` = $activity";
+        return $this->db->select($q)[0]
+    }
+
 }

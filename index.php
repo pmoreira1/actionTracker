@@ -47,6 +47,10 @@ $app->get("/home", function ($request, $response) {
     $action = new ActionTracker($db);
     $result = array();
     $result['dayStart'] = $action->dayStart();
+    $result['lastSmoke'] = $action->lastActivity(4);
+    $result['smokedToday'] = $action->dayActivity(4);
+    $result['lastCoffee'] = $action->lastActivity(5);
+    $result['coffeeToday'] = $action->dayActivity(5);
     return $response->withJson($result, 200);
 });
 $app->run();
