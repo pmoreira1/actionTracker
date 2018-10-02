@@ -28,7 +28,11 @@ class ActionTracker
     {
         $dayStart = $this->dayStart['timestamp'];
         $q = "SELECT * from dayActions where `action` = 2 and `dateTime` > '$dayStart' ORDER BY `dateTime` desc limit 1";
-        return $this->db->select($q)[0];
+        $dayEnd = $this->db->select($q)[0];
+        if (count($dayEnd) == 0) {
+            //no sleep data add 24 hours to dayStart
+            $dayEnd['dateTime'] = date('Y-m-d H:i:s', strtotime($dayStart . " + 24 hours"));
+        }
     }
 
     public function lastActivity($activity)
@@ -41,10 +45,8 @@ class ActionTracker
     {
         if (!$date) {
             $date = date('Y-m-d');
-            $dayEnd = date('Y-m-d H:i:s', strtotime($date . " + 18 hours"));
-        } else {
-            $dayEnd = $this->dayEnd($date)['dateTime'];
         }
+        $dayEnd = $this->dayEnd($date)['dateTime'];
         $dayStart = $this->dayStart($date)['dateTime'];
         $q = "SELECT COUNT(*) as `total` FROM dayActions WHERE `action` = $activity and `dateTime` BETWEEN " . $this->db->quote($dayStart) . "  and " . $this->db->quote($dayEnd) . "";
         return $this->db->select($q)[0];
