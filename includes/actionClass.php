@@ -41,7 +41,7 @@ class ActionTracker
     {
         if (!$date) {
             $date = date('Y-m-d');
-            $dayEnd = date('Y-m-d', strtotime($date . " + 18 hours"));
+            $dayEnd = date('Y-m-d H:i:s', strtotime($date . " + 18 hours"));
         } else {
             $dayEnd = $this->dayEnd($date)['dateTime'];
         }
