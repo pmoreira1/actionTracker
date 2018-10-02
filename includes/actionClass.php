@@ -28,12 +28,12 @@ class ActionTracker
     {
         $dayStart = $this->dayStart['timestamp'];
         $q = "SELECT * from dayActions where `action` = 2 and `dateTime` > '$dayStart' ORDER BY `dateTime` desc limit 1";
-        $dayEnd = $this->db->select($q)[0];
-        if (count($dayEnd) == 0) {
+        $res = $this->db->select($q)[0];
+        if (!$res) {
             //no sleep data add 24 hours to dayStart
-            $dayEnd['dateTime'] = date('Y-m-d H:i:s', strtotime($dayStart . " + 24 hours"));
+            $res['dateTime'] = date('Y-m-d H:i:s', strtotime($dayStart . " + 24 hours"));
         }
-        return $dayEnd;
+        return $res;
     }
 
     public function lastActivity($activity)
